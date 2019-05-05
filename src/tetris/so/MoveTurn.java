@@ -1,8 +1,7 @@
 package tetris.so;
 
-import domain.Rect;
-import domain.TetrisShape;
-import javafx.scene.shape.Rectangle;
+import model.Rect;
+import model.TetrisShape;
 
 public class MoveTurn extends AbstractGenericOperation{
 

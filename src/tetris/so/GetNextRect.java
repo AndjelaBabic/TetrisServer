@@ -1,10 +1,7 @@
 package tetris.so;
 
-import domain.Rect;
-import domain.TetrisShape;
-import domain.Tetromino;
-import javafx.scene.shape.Rectangle;
-import util.Constants;
+import model.Rect;
+import model.TetrisShape;
 
 public class GetNextRect extends AbstractGenericOperation {
 

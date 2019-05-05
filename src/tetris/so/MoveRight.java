@@ -1,6 +1,6 @@
 package tetris.so;
 
-import domain.TetrisShape;
+import model.TetrisShape;
 
 public class MoveRight extends AbstractGenericOperation {
 
