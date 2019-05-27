@@ -6,18 +6,19 @@ import model.TetrisShape;
 public class GetNextRect extends AbstractGenericOperation {
 
 
-    public GetNextRect(int[][] MESH) {
+    public GetNextRect(int[][] MESH) throws Exception {
         super(MESH);
     }
 
     @Override
-    protected void validate(TetrisShape object) throws Exception {
+    protected void validate(Object o)  {
 
     }
 
     @Override
-    protected void execute(TetrisShape object) throws Exception {
+    protected void execute(Object o)  {
         // random color
+        TetrisShape object = (TetrisShape) o;
         int randomNumber = (int) (Math.random() * 100);
 
         Rect a = new Rect(SIZE - 1, SIZE - 1);

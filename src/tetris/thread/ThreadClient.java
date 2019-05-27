@@ -2,6 +2,7 @@ package tetris.thread;
 
 import model.Rect;
 import model.TetrisShape;
+import results.Results;
 import tetris.so.*;
 import transfer.RequestObject;
 import transfer.ResponseObject;
@@ -53,13 +54,13 @@ public class ThreadClient extends Thread {
                         break;
                     case Operation.MOVE_RIGHT:
                         operation = new MoveRight(MESH);
-                        operation.templateExecute((TetrisShape) request.getData());
+                        operation.templateExecute(request.getData());
                         response.setCode(1);
                         response.setData(operation.getShape());
                         break;
                     case Operation.MOVE_LEFT:
                         operation = new MoveLeft(MESH);
-                        operation.templateExecute((TetrisShape) request.getData());
+                        operation.templateExecute(request.getData());
                         response.setCode(1);
                         response.setData(operation.getShape());
                         break;
@@ -70,7 +71,7 @@ public class ThreadClient extends Thread {
                             response.setCode(1);
                             response.setData(operation.getShape());
                             break;
-                        } catch (Exception e){
+                        } catch (Exception e) {
                             response.setCode(2);
                             response.setData(e.getMessage());
                             break;
@@ -78,30 +79,49 @@ public class ThreadClient extends Thread {
                     case Operation.MOVE_TURN:
                         try {
                             operation = new MoveTurn(MESH);
-                            operation.templateExecute((TetrisShape) request.getData());
+                            operation.templateExecute(request.getData());
                             response.setCode(1);
                             response.setData(operation.getShape());
-                        } catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         break;
-                    case 12:
+                    case Operation.REMOVE_ROWS:
                         try {
                             operation = new RemoveRows(MESH);
                             ((RemoveRows) operation).setAllRects((List<Rect>) request.getData());
                             operation.templateExecute(null);
                             response.setData(((RemoveRows) operation).rowsToRemoveIndex);
                             response.setCode(1);
-                        } catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         break;
-                    case 23:
+                    case Operation.CHECK_BOUNDRIES:
                         try {
                             operation = new CheckBoundries(MESH);
-                            operation.templateExecute((TetrisShape) request.getData());
+                            operation.templateExecute(request.getData());
                             response.setCode(1);
-                        } catch (Exception e){
+                        } catch (Exception e) {
+                            response.setCode(2);
+                        }
+                        break;
+                    case Operation.INSERT_IN_SCORES:
+                        try {
+                            operation = new InsertInScores(MESH);
+                            operation.templateExecute(request.getData());
+                            response.setCode(1);
+                        } catch (Exception e) {
+                            response.setCode(2);
+                        }
+                        break;
+                    case Operation.GET_HIGH_SCORE_LIST:
+                        try {
+                            operation = new GetHighScoreList(MESH);
+                            operation.templateExecute(request.getData());
+                            response.setCode(1);
+                            response.setData(((GetHighScoreList)operation).getResults());
+                        } catch (Exception e) {
                             response.setCode(2);
                         }
                         break;

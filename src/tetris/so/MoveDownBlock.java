@@ -5,12 +5,13 @@ import model.TetrisShape;
 public class MoveDownBlock  extends AbstractGenericOperation{
 
 
-    public MoveDownBlock(int[][] MESH) {
+    public MoveDownBlock(int[][] MESH) throws Exception {
         super(MESH);
     }
 
     @Override
-    protected void validate(TetrisShape object) throws Exception {
+    protected void validate(Object o) throws Exception {
+        TetrisShape object = (TetrisShape) o;
         if (object.a.getY() + MOVE == YMAX || object.b.getY() + MOVE == YMAX || object.c.getY() + MOVE == YMAX || object.d.getY() + MOVE == YMAX
                 || touchingOtherBlock(object)){
             MESH[(int) (object.a.getX() / SIZE)][(int) (object.a.getY() / SIZE)] = 1;
@@ -23,8 +24,9 @@ public class MoveDownBlock  extends AbstractGenericOperation{
 
     // this method moves block down and removes rows if needed
     @Override
-    protected void execute(TetrisShape object) throws Exception {
+    protected void execute(Object o) throws Exception {
             // moving the block down
+            TetrisShape object = (TetrisShape) o;
             if (object.a.getY() + MOVE < YMAX && object.b.getY() + MOVE < YMAX && object.c.getY() + MOVE < YMAX && object.d.getY() + MOVE < YMAX
                     && !touchingOtherBlock(object)) {
                 shape = object;

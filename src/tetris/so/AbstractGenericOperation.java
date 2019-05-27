@@ -2,9 +2,12 @@ package tetris.so;
 
 import model.Rect;
 import model.TetrisShape;
+import tetris.db.DatabaseRepository;
 import util.Constants;
 
 public abstract class AbstractGenericOperation {
+
+    protected DatabaseRepository db;
 
     TetrisShape shape;
     int SIZE = Constants.SIZE;
@@ -13,11 +16,12 @@ public abstract class AbstractGenericOperation {
     int YMAX = Constants.YMAX;
     public int MESH[][];
 
-    public AbstractGenericOperation(int MESH[][]) {
+    public AbstractGenericOperation(int MESH[][]) throws Exception {
         this.MESH = MESH;
+        this.db = new DatabaseRepository();
     }
 
-    public void templateExecute(TetrisShape object) throws Exception {
+    public void templateExecute(Object object) throws Exception {
         try {
             validate(object);
             try {
@@ -31,11 +35,11 @@ public abstract class AbstractGenericOperation {
 
     }
 
-    protected abstract void validate(TetrisShape object) throws Exception;
+    protected abstract void validate(Object object) throws Exception;
 
-    protected abstract void execute(TetrisShape object) throws Exception;
+    protected abstract void execute(Object object) throws Exception;
 
-    public TetrisShape getShape(){
+    public TetrisShape getShape() {
         return shape;
     }
 

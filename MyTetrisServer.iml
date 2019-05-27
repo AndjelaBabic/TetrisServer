@@ -10,6 +10,15 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://C:/Program Files/NetBeans 8.2/ide/modules/ext/mysql-connector-java-5.1.23-bin.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="file://$MODULE_DIR$/../MyTetrisLib/out/production/MyTetrisLib" />
         </CLASSES>
         <JAVADOC />

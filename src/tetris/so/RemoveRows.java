@@ -12,17 +12,17 @@ public class RemoveRows extends AbstractGenericOperation {
     public List<Rect> allRects;
     public List<Integer> rowsToRemoveIndex;
 
-    public RemoveRows(int[][] MESH) {
+    public RemoveRows(int[][] MESH) throws Exception {
         super(MESH);
     }
 
     @Override
-    protected void validate(TetrisShape object) throws Exception {
+    protected void validate(Object object) throws Exception {
 
     }
 
     @Override
-    protected void execute(TetrisShape object) throws Exception {
+    protected void execute(Object object) throws Exception {
         rowsToRemoveIndex = new ArrayList<>();
 
         for (int y = 0; y < YMAX / SIZE; y++) {
@@ -52,7 +52,7 @@ public class RemoveRows extends AbstractGenericOperation {
 
         for (Rect rect: newRects) {
             int rowsToMoveDown = calculateHowManyRowsToMoveDown(rowsToRemoveIndex, rect);
-            if (rowsToMoveDown != 0) {
+            if (rowsToMoveDown !=  0) {
                 MESH[(int) rect.getX() / SIZE][(int) rect.getY() / SIZE] = 0;
                 rect.setY(rect.getY() + SIZE * rowsToMoveDown);
             }

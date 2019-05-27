@@ -2,6 +2,7 @@ package tetris;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import tetris.db.DatabaseRepository;
 import tetris.thread.ThreadServer;
 
 import java.net.ServerSocket;

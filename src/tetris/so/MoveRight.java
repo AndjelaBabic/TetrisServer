@@ -5,18 +5,19 @@ import model.TetrisShape;
 public class MoveRight extends AbstractGenericOperation {
 
 
-    public MoveRight(int[][] MESH) {
+    public MoveRight(int[][] MESH) throws Exception {
         super(MESH);
     }
 
     @Override
-    protected void validate(TetrisShape object) throws Exception {
+    protected void validate(Object o) throws Exception {
 
     }
 
     @Override
-    protected void execute(TetrisShape object) throws Exception {
+    protected void execute(Object o) throws Exception {
 
+        TetrisShape object = (TetrisShape) o;
         if (object.a.getX() + SIZE + MOVE <= XMAX && object.b.getX() + SIZE + MOVE <= XMAX &&
                 object.c.getX() + SIZE + MOVE <= XMAX && object.d.getX() + SIZE + MOVE <= XMAX) {
             int movea = MESH[(int) (object.a.getX() / SIZE + 1)][(int) object.a.getY() / SIZE];

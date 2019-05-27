@@ -5,24 +5,25 @@ import model.TetrisShape;
 
 public class MoveTurn extends AbstractGenericOperation{
 
-    public MoveTurn(int[][] MESH) {
+    public MoveTurn(int[][] MESH) throws Exception {
         super(MESH);
     }
 
     @Override
-    protected void validate(TetrisShape object) throws Exception {
+    protected void validate(Object o) throws Exception {
 
     }
 
     @Override
-    protected void execute(TetrisShape object) throws Exception {
+    protected void execute(Object o) throws Exception {
+        TetrisShape object = (TetrisShape) o;
         int f = object.getForm();
         Rect a = object.a;
         Rect b = object.b;
         Rect c = object.c;
         Rect d = object.d;
 
-        switch (object.getName()) { // TODO make functions to move with coordinates
+        switch (object.getName()) {
             case "j":
                 if (f == 1 && checkBoundries(a, 1, 2) && checkBoundries(b, 0, 1) && checkBoundries(c, 0, -1)
                         && checkBoundries(d, -1, 0)) {
