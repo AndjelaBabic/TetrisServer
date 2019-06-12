@@ -57,7 +57,7 @@ public class DatabaseRepository {
     // done
     public List<Results> getAllHighScores() {
         try {
-            String query = "SELECT id, name, score, date FROM results ORDER BY score";
+            String query = "SELECT id, name, score, date FROM results ORDER BY score DESC";
             Statement st = connection.createStatement();
 
             ResultSet rs = st.executeQuery(query);
